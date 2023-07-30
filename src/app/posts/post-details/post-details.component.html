@@ -10,4 +10,6 @@
     <div class="row" style="margin-bottom: 10px;">
       {{post?.body}}
     </div>
+    <button (click)="deletePost(post?.id)" class="btn btn-default">DELETE POST</button>
+    <button (click)="edit(post?.id)" [routerLink]="['/posts/edit',post?.id]" class="btn btn-default">EDIT POST</button>
     </div>

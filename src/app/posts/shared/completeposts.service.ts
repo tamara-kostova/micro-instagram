@@ -87,6 +87,6 @@ export class CompletePostService{
         this.completeposts.push(post)
     }
     removePost(id:any){
-      this.completeposts.filter(post=>post.id!=id)
+      this.completeposts = this.completeposts.filter(post=>post.id!=id)
     }
 }

@@ -32,16 +32,16 @@ export class EditPostComponent implements OnInit{
     constructor (private router:Router, private postService : CompletePostService){
     }
     cancel(){
-        this.router.navigate(['/posts']);
+        this.router.navigate(['/posts'])
     }
     editPost(){
         this.isDirty=false;
         this.postService.editPost(
             new IPost(this.userId,this.id,this.title,this.body,this.url,this.thumbnailUrl)
         )
-        this.router.navigate(['/posts']);
+        this.router.navigate(['/posts'])
     }
     ngOnInit(): void {
-        this.id = this.postService.idforEdit;
+        this.id = this.postService.idforEdit
     }
 }
