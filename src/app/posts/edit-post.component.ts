@@ -14,7 +14,7 @@ import { IPost } from "./shared/post.model";
     .error :ms-input-placeholder {color: #999}
     `]
 })
-export class EditPostComponent{
+export class EditPostComponent implements OnInit{
     post : any
     isDirty:boolean
     userId: string
@@ -34,5 +34,8 @@ export class EditPostComponent{
             new IPost(this.userId,this.id,this.title,this.body,this.url,this.thumbnailUrl)
         )
         this.router.navigate(['/posts']);
+    }
+    ngOnInit(): void {
+        this.id = this.postService.idforEdit;
     }
 }
