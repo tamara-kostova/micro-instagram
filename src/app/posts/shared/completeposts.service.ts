@@ -50,9 +50,9 @@ export class CompletePostService{
       this.postService.getPosts().subscribe(data=>{this.posts=data; this.loadPhotos();})
     }
     loadPhotos(){
-      this.photoService.getPhotos().subscribe(data=>{this.photos=data.slice(0,100); this.updatePosts()})
+      this.photoService.getPhotos().subscribe(data=>{this.photos=data.slice(0,100); this.refresh()})
     }
-    updatePosts(){
+    refresh(){
       for(let i=0; i<this.posts.length && i<this.photos.length; i++){
           this.completeposts.push(
               new IPost(
@@ -76,18 +76,24 @@ export class CompletePostService{
       if (this.idforEdit)
         {
           post.id=this.idforEdit
-          this.completeposts.filter(post=> post.id!=this.idforEdit)
-          this.removePost(this.idforEdit)
-          this.completeposts.push(
-            new IPost(
-              post.userId,
-              post.id,
-              post.title,
-              post.body,
-              post.url,
-              post.thumbnailUrl
-            ))
-          this.updatePosts()
+          let foredit = this.completeposts.find(post=>post.id==this.idforEdit)
+          if (foredit){
+            let index = this.completeposts.indexOf(foredit)
+            this.completeposts[index] = post
+            this.refresh()
+          }
+          // this.completeposts.filter(post=> post.id!=this.idforEdit)
+          // this.removePost(this.idforEdit)
+          // this.completeposts.push(
+          //   new IPost(
+          //     post.userId,
+          //     post.id,
+          //     post.title,
+          //     post.body,
+          //     post.url,
+          //     post.thumbnailUrl
+          //   ))
+          // this.refresh()
         }
       else
         this.completeposts.push(post)
