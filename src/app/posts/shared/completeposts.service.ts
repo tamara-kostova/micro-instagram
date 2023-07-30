@@ -12,10 +12,10 @@ import { PostsService } from './post.service';
   providedIn: 'root'
 })
 export class CompletePostService{
+    idforEdit : any
     posts:Post[]=[]
     photos:Photo[]=[]
     completeposts:IPost[]=[]
-    idforEdit : any
     
     constructor(private postService: PostsService, private photoService: PhotosService){
       this.loadPosts()
@@ -73,14 +73,10 @@ export class CompletePostService{
       this.idforEdit = id
     }
     editPost(post:IPost){
-      console.log("id for edit: "+this.idforEdit)
       if (this.idforEdit)
         {
           post.id=this.idforEdit
-          console.log("editing")
-          console.log("postUserid: "+post.userId)
-          console.log("body: "+post.body)
-          console.log("url: "+post.url)
+          this.completeposts.filter(post=> post.id!=this.idforEdit)
           this.removePost(this.idforEdit)
           this.completeposts.push(
             new IPost(
@@ -91,7 +87,7 @@ export class CompletePostService{
               post.url,
               post.thumbnailUrl
             ))
-          // this.updatePosts()
+          this.updatePosts()
         }
       else
         this.completeposts.push(post)
