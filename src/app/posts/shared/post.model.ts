@@ -7,7 +7,6 @@ export class IPost {
       public url: string,
       public thumbnailUrl: string
     ) {
-        
     }
   }
   

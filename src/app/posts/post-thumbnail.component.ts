@@ -5,9 +5,9 @@ import { IPost } from "./shared/post.model";
     selector: 'post-thumbnail',
     template:`
     <div [routerLink]="['/posts',post.id]" class="well hoverwell thumbnail">
-        <h2>{{post?.title | uppercase}}</h2>
+        <h2>{{post.title | uppercase}}</h2>
         <div *ngIf="post?.url">
-            <img src="{{post?.thumbnailUrl}}">
+            <img src="{{post.thumbnailUrl}}">
         </div>
     </div>
     `,

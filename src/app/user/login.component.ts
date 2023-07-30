@@ -6,6 +6,10 @@ import { Router } from "@angular/router";
     templateUrl: './login.component.html',
     styles: [`
         em {float:right; color: #E05C65; padding-left:10px;}
+        .cancel-btn{
+        background-color: #014f86;
+        }
+        .cancel-btn:hover{background-color:#2c7da0}
     `]
 })
 export class LoginComponent{

@@ -8,17 +8,14 @@ import { Post } from './post-short.model';
   providedIn: 'root'
 })
 export class PostsService {
+  private src = "http://jsonplaceholder.typicode.com/posts"
+  constructor(private httpClient: HttpClient) { 
 
-  private source = "http://jsonplaceholder.typicode.com/posts"
-  constructor(private httpClient: HttpClient) { }
-
+  }
   public getPosts(): Observable<Post[]>{
-    return this.httpClient.get<Post[]>(this.source).pipe(
-      map(data => data)
-    );
+    return this.httpClient.get<Post[]>(this.src).pipe(map(data => data));
   }
   public getPost(id:number): Observable<Post>{
-    return this.httpClient.get<Post>(this.source+'/'+id).pipe(map(data => data))
+    return this.httpClient.get<Post>(this.src+'/'+id).pipe(map(data => data))
   }
-  
 }

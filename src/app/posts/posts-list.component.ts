@@ -22,7 +22,9 @@ import { style } from "@angular/animations";
     styles:[`
       button{
         margin-bottom: 20px;
+        background-color: #014f86;
       }
+      button:hover{background-color:#2c7da0}
     `]
 })
 export class PostsListComponent implements OnInit{
@@ -35,7 +37,7 @@ export class PostsListComponent implements OnInit{
   deletePost(id:any){
     if (window.confirm("Are you sure you want to delete this post?")) {
       this.posts=this.posts.filter(post=> post.id!=id)
-      this.postService.updatePosts(id)
+      this.postService.removePost(id)
   }
 }
 }

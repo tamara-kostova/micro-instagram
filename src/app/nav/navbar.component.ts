@@ -4,7 +4,8 @@ import { AuthService } from "../user/auth.service";
     selector: 'nav-bar',
     templateUrl: 'navbar.component.html',
     styles: [`
-    .nav.navbar-nav {font-size:15px;}
+    .nav.navbar-nav {font-size:15px; }
+    .nav.navbar-nav a:hover{background-color:#2c7da0}
     #searchForm {margin-right: 100px;}
     @media (max-width: 1200px) {#searchForm {display: none}}
     li > a.active {color: #F97924;}
