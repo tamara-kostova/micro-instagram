@@ -82,18 +82,6 @@ export class CompletePostService{
             this.completeposts[index] = post
             this.refresh()
           }
-          // this.completeposts.filter(post=> post.id!=this.idforEdit)
-          // this.removePost(this.idforEdit)
-          // this.completeposts.push(
-          //   new IPost(
-          //     post.userId,
-          //     post.id,
-          //     post.title,
-          //     post.body,
-          //     post.url,
-          //     post.thumbnailUrl
-          //   ))
-          // this.refresh()
         }
       else
         this.completeposts.push(post)
