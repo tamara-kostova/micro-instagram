@@ -6,17 +6,17 @@ import { IPost } from "./shared/post.model";
     template:`
     <div [routerLink]="['/posts',post.id]" class="well hoverwell thumbnail">
         <h2>{{post?.title | uppercase}}</h2>
-        <div>{{post?.body}}</div>
         <div *ngIf="post?.url">
             <img src="{{post?.thumbnailUrl}}">
         </div>
     </div>
     `,
     styles:[`
-        .thumbnail{ height: 450px; text-align: center; align-items: center; display: flex; flex-direction: column;}
+        .thumbnail{ height: 380px; text-align: center; align-items: center; display: flex; flex-direction: column;background-color:#014f86}
         .pad-left{margin-left: 10px;}
         .well div{color: #bbb;}
-        img{height:150px; margin-top:5px}
+        img{height:150px; margin-top:10px}
+        .hoverwell:hover{background-color:#2c7da0;}
     `]
 })
 export class PostThumbnailComponent{

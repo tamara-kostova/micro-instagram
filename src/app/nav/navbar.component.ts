@@ -8,6 +8,7 @@ import { AuthService } from "../user/auth.service";
     #searchForm {margin-right: 100px;}
     @media (max-width: 1200px) {#searchForm {display: none}}
     li > a.active {color: #F97924;}
+    .container-fluid{background-color: #014f86}
     `]
 })
 export class NavBarComponent{

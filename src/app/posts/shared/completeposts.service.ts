@@ -76,13 +76,15 @@ showPosts(){
       )
   }
 }
-
 getAllPosts(){
   return this.fullPostList;
   console.log("Full post list:"+this.fullPostList)
 }
 savePost(post:IPost){
   this.fullPostList.push(post)
+}
+updatePosts(id:any){
+  this.fullPostList.filter(post=>post.id!=id)
 }
 }
 

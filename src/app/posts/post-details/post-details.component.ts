@@ -7,7 +7,7 @@ import { IPost } from "../shared/post.model";
     templateUrl:'./post-details.component.html',
     styles:[`
         .container{padding-left:20px;}
-        .post-image{height: 100px;}
+        .post-image{height: 300px;}
     `]
 })
 export class PostDetailsComponent implements OnInit{

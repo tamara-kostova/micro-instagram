@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 .hoverwell:hover {
-    background-color: #485563;
+    background-color: rgb(151, 162, 174);
     cursor: pointer;
   }
   
   .container {
     padding-top: 10px;
+    background-color: #89c2d9;
   }
   
   .pointable {
@@ -14,6 +15,7 @@
   
   button {
     color: #555;
+    background-color: #014f86;
   }
   
   [hidden] {
