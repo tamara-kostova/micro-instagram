@@ -1,4 +1,5 @@
 export * from './create-post.component'
+export * from './edit-post.component'
 export * from './post-thumbnail.component'
 export * from './posts-list.component'
 export * from './shared/index'

@@ -15,6 +15,7 @@ export class CompletePostService{
     posts:Post[]=[]
     photos:Photo[]=[]
     completeposts:IPost[]=[]
+    idforEdit : any
     
     constructor(private postService: PostsService, private photoService: PhotosService){
       this.loadPosts()
@@ -67,6 +68,33 @@ export class CompletePostService{
     }
     savePost(post:IPost){
       this.completeposts.push(post)
+    }
+    getIdforEdit(id:any){
+      this.idforEdit = id
+    }
+    editPost(post:IPost){
+      console.log("id for edit: "+this.idforEdit)
+      if (this.idforEdit)
+        {
+          post.id=this.idforEdit
+          console.log("editing")
+          console.log("postUserid: "+post.userId)
+          console.log("body: "+post.body)
+          console.log("url: "+post.url)
+          this.removePost(this.idforEdit)
+          this.completeposts.push(
+            new IPost(
+              post.userId,
+              post.id,
+              post.title,
+              post.body,
+              post.url,
+              post.thumbnailUrl
+            ))
+          // this.updatePosts()
+        }
+      else
+        this.completeposts.push(post)
     }
     removePost(id:any){
       this.completeposts.filter(post=>post.id!=id)

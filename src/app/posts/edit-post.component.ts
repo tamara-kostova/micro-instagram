@@ -4,7 +4,7 @@ import { CompletePostService } from "./shared/completeposts.service";
 import { IPost } from "./shared/post.model";
 
 @Component({
-    templateUrl: './create-post.component.html',
+    templateUrl: './edit-post.component.html',
     styles:[`
     em{ float: right; color: #E05C65; padding-left: 10px;}
     .error input{background-color: #E3C3C5;}
@@ -14,7 +14,7 @@ import { IPost } from "./shared/post.model";
     .error :ms-input-placeholder {color: #999}
     `]
 })
-export class CreatePostComponent{
+export class EditPostComponent{
     post : any
     isDirty:boolean
     userId: string
@@ -24,14 +24,13 @@ export class CreatePostComponent{
     url: string
     thumbnailUrl: string
     constructor (private router:Router, private postService : CompletePostService){
-        
     }
     cancel(){
         this.router.navigate(['/posts']);
     }
-    savePost(){
+    editPost(){
         this.isDirty=false;
-        this.postService.savePost(
+        this.postService.editPost(
             new IPost(this.userId,this.id,this.title,this.body,this.url,this.thumbnailUrl)
         )
         this.router.navigate(['/posts']);

@@ -21,6 +21,7 @@ import { CollapsibleWellComponent } from './common/collapsible-well.component';
 import { PhotosService } from './posts/shared/photos.service';
 import { CompletePostService } from './posts/shared/completeposts.service';
 import { HttpClientModule } from '@angular/common/http';
+import { EditPostComponent } from './posts/edit-post.component';
 
 declare let toastr : Toastr
 
@@ -39,7 +40,8 @@ declare let toastr : Toastr
     NavBarComponent,
     PostDetailsComponent,
     CreatePostComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    EditPostComponent
   ],
   providers:[
     PostsService, 

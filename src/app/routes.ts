@@ -3,13 +3,15 @@ import{
     PostDetailsComponent,
     CreatePostComponent,
     PostsListComponent,
-    PostRouteActivator
+    PostRouteActivator,
+    EditPostComponent
 } from './posts/index'
 import { Error404Component } from './errors/404.component';
 
 export const appRoutes : Routes = [
     {path: 'posts/new', component: CreatePostComponent,
 canDeactivate: ['canDeactivateCreateEvent']},
+{path: 'posts/edit/:id', component: EditPostComponent},
     {path: 'posts', component: PostsListComponent},
     {path: 'posts/:id', component: PostDetailsComponent,
 canActivate:[PostRouteActivator]},

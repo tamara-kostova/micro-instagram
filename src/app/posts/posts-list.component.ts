@@ -15,6 +15,7 @@ import { style } from "@angular/animations";
           <post-thumbnail [post]="post" >
           </post-thumbnail>
           <button (click)="deletePost(post.id)" class="btn btn-default">DELETE POST</button>
+          <button (click)="edit(post.id)" [routerLink]="['/posts/edit',post.id]" class="btn btn-default">EDIT POST</button>
         </div>
       </div>
     </div>
@@ -23,6 +24,8 @@ import { style } from "@angular/animations";
       button{
         margin-bottom: 20px;
         background-color: #014f86;
+        margin-left:2.5px;
+        margin-right:2.5px;
       }
       button:hover{background-color:#2c7da0}
     `]
@@ -40,4 +43,7 @@ export class PostsListComponent implements OnInit{
       this.postService.removePost(id)
   }
 }
+  edit(id:any){
+    this.postService.getIdforEdit(id)
+  }
 }

@@ -1,0 +1,38 @@
+<h1>Update Post</h1>
+<hr>
+<div class="col-md-6">
+  <form #editPostForm="ngForm" (ngSubmit)="editPost()" autocomplete="off" novalidate>
+    <div class="form-group" >
+      <label for="title">Post Title:</label>
+      <!-- <em >Required</em> -->
+      <input [(ngModel)]="title" name="title" id ="title" required id="title" type="text" class="form-control" placeholder="Updated title of your post..." />
+    </div>
+    <div class="form-group" >
+      <label for="body">Post Body:</label>
+      <!-- <em *ngIf="editPostForm.controls['body']?.invalid && (editPostForm.controls['body']?.touched)">Required</em> -->
+      <input [(ngModel)]="body" name="body" id="body" required id="postBody" type="text" class="form-control" placeholder="Updated post body..." />
+    </div>
+    <div class="form-group" >
+      <label for="id">Post ID:</label>
+      <!-- <em *ngIf="editPostForm.controls['id']?.invalid && (editPostForm.controls['id']?.touched)">Required</em> -->
+      <input disabled [(ngModel)]="id" name="id" required id="id" type="text" class="form-control" placeholder="{{id}}" />
+    </div>
+    <div class="form-group" >
+      <label for="userId">User ID:</label>
+      <!-- <em *ngIf="editPostForm.controls['userId']?.invalid && (editPostForm.controls['userId']?.touched)">Required</em> -->
+      <input [(ngModel)]="userId" name="userId" id="userId" required id="userId" type="text" class="form-control" placeholder="Updated Id of the user..." />
+    </div>
+    
+    <div class="form-group">
+      <label for="url">Url:</label>
+      <input [(ngModel)]="url" name="url" id="url" type="text" class="form-control" placeholder="Updated url..." />
+    </div>
+    <div class="form-group">
+      <label for="thumbnailUrl">Thumbnail Url:</label>
+      <input [(ngModel)]="thumbnailUrl" name="thumbnailUrl" id="thumbnailUrl" type="text" class="form-control" placeholder="Updated thumbnail url..." />
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Edit</button>
+    <button type="button" [disabled]="editPostForm.invalid" class="btn btn-default" (click)="cancel()">Cancel</button>
+  </form>
+</div>
