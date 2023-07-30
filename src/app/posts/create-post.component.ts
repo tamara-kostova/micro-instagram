@@ -12,6 +12,12 @@ import { IPost } from "./shared/post.model";
     .error ::-moz-placeholder {color: #999}
     .error :-moz-placeholder {color: #999}
     .error :ms-input-placeholder {color: #999}
+    button{
+        background-color: #014f86;
+        margin-left:2.5px;
+        margin-right:2.5px;
+      }
+      button:hover{background-color:#2c7da0}
     `]
 })
 export class CreatePostComponent{
