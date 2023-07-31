@@ -13,8 +13,8 @@ import { IPost } from "../shared/post.model";
         background-color: #014f86;
         margin-left:2.5px;
         margin-right:2.5px;
-      }
-      button:hover{background-color:#2c7da0}
+        }
+        button:hover{background-color:#2c7da0}
     `]
 })
 export class PostDetailsComponent implements OnInit{
