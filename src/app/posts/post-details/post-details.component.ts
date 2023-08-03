@@ -31,7 +31,7 @@ export class PostDetailsComponent implements OnInit{
             this.router.navigate(['/posts'])
       }
     }
-      edit(id:any){
+    editPost(id:any){
         this.postservice.getIdforEdit(id)
-      }
+    }
 }

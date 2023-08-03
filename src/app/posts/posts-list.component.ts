@@ -30,8 +30,8 @@ export class PostsListComponent implements OnInit{
     if (window.confirm("Are you sure you want to delete this post?")) {
       this.posts=this.posts.filter(post=> post.id!=id)
       this.postService.removePost(id)
+    }
   }
-}
   edit(id:any){
     this.postService.getIdforEdit(id)
   }
