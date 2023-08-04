@@ -20,8 +20,8 @@ import { PostListService } from "../shared/postlist.service";
 })
 export class PostDetailsComponent implements OnInit{
     @Input() post?:IPost
-    constructor (private postdetailsservice : PostDetailsService, private postlistservice : PostListService ,private route : ActivatedRoute, private router : Router){
-
+    constructor (public postdetailsservice : PostDetailsService, private postlistservice : PostListService ,private route : ActivatedRoute, private router : Router){
+        
     }
     ngOnInit(){
         this.postdetailsservice.getPost(+this.route.snapshot.params['id']).subscribe(data=>{this.post=data})

@@ -10,11 +10,15 @@ import { IPost } from './post.model';
 })
 export class PostDetailsService {
   private src = "https://jsonplaceholder.typicode.com/posts"
+  url : string
   constructor(private httpClient: HttpClient) { 
 
   }
   public getPost(id:number): Observable<IPost>{
     return this.httpClient.get<IPost>(this.src+'/'+id).pipe(map(data => data))
   }
-  
+  public setUrl (url:string) {
+    this.url = url; 
+    console.log("Vo service "+this.url)
+  }
 }
