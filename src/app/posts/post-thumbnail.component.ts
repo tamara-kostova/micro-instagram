@@ -25,7 +25,6 @@ export class PostThumbnailComponent{
     constructor(private postdetailsservice : PostDetailsService){
     }
     getUrl(url:string){
-        console.log("Vo thumbnail "+url)
         this.postdetailsservice.setUrl(url);
     }
 }
