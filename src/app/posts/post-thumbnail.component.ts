@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { IPost } from "./shared/post.model";
 import { Photo } from "./shared/photo.model";
 
 @Component({

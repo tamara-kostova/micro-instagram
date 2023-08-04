@@ -16,7 +16,7 @@ import { PostListService } from "./shared/postlist.service";
                   currentPage: pagenumber,
                   totalItems: 5000
                 }" class="col-md-5">
-          <post-thumbnail [post]="post" >
+          <post-thumbnail [post]="post">
           </post-thumbnail>
         </div>
       </div>
