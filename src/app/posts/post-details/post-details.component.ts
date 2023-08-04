@@ -1,7 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Router} from "@angular/router"
 import { CompletePostService } from "../shared/completeposts.service";
 import { IPost } from "../shared/post.model";
+import { Photo } from "../shared/photo.model";
+import { Post } from "../shared/post-short.model";
+import { PostDetailsService } from "../shared/postdetails.service";
+import { PostListService } from "../shared/postlist.service";
 
 @Component({
     templateUrl:'./post-details.component.html',
@@ -18,20 +22,20 @@ import { IPost } from "../shared/post.model";
     `]
 })
 export class PostDetailsComponent implements OnInit{
-    post?:IPost
-    constructor (private postservice : CompletePostService, private route : ActivatedRoute, private router : Router){
+    @Input() post?:IPost
+    constructor (private postdetailsservice : PostDetailsService, private postlistservice : PostListService ,private route : ActivatedRoute, private router : Router){
 
     }
     ngOnInit(){
-        this.postservice.getPost(+this.route.snapshot.params['id']).subscribe(data=>{this.post=data})
+        this.postdetailsservice.getPost(+this.route.snapshot.params['id']).subscribe(data=>{this.post=data})
     }
     deletePost(id:any){
         if (window.confirm("Are you sure you want to delete this post?")) {
-            this.postservice.removePost(id)
+            this.postlistservice.deletePost(id)
             this.router.navigate(['/posts'])
       }
     }
     editPost(id:any){
-        this.postservice.getIdforEdit(id)
+        this.postlistservice.getIdforEdit(id)
     }
 }

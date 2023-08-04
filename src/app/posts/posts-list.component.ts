@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { CompletePostService } from "./shared/completeposts.service";
-import { IPost } from "./shared/post.model";
-import { style } from "@angular/animations";
+import { Photo } from "./shared/photo.model";
+import { PostListService } from "./shared/postlist.service";
 
 @Component({
     selector:'posts',
@@ -20,19 +19,19 @@ import { style } from "@angular/animations";
     `,
 })
 export class PostsListComponent implements OnInit{
-  posts: IPost[]
-  constructor(private postService : CompletePostService, private route:ActivatedRoute){
+  posts: Photo[] = []
+  constructor(private postlistservice : PostListService, private route:ActivatedRoute){
   }
   ngOnInit(){
-    this.posts = this.postService.getAllPosts()
+    this.postlistservice.getPhotos().subscribe(data=>{this.posts=data})
   }
   deletePost(id:any){
     if (window.confirm("Are you sure you want to delete this post?")) {
+      this.postlistservice.deletePost(id).subscribe()
       this.posts=this.posts.filter(post=> post.id!=id)
-      this.postService.removePost(id)
     }
   }
   edit(id:any){
-    this.postService.getIdforEdit(id)
+    this.postlistservice.getIdforEdit(id)
   }
 }

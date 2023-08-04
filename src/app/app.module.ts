@@ -22,6 +22,8 @@ import { PhotosService } from './posts/shared/photos.service';
 import { CompletePostService } from './posts/shared/completeposts.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EditPostComponent } from './posts/edit-post.component';
+import { PostDetailsService } from './posts/shared/postdetails.service';
+import { PostListService } from './posts/shared/postlist.service';
 
 declare let toastr : Toastr
 
@@ -35,13 +37,13 @@ declare let toastr : Toastr
   ],
   declarations: [
     PostsAppComponent,
-    PostsListComponent,
     PostThumbnailComponent,
     NavBarComponent,
     PostDetailsComponent,
     CreatePostComponent,
     CollapsibleWellComponent,
-    EditPostComponent
+    EditPostComponent,
+    PostsListComponent
   ],
   providers:[
     PostsService, 
@@ -50,9 +52,11 @@ declare let toastr : Toastr
       useValue: toastr
     }, 
     PhotosService,
-    CompletePostService,
     PostRouteActivator,
     AuthService,
+    PostDetailsService,
+    PostListService,
+    CompletePostService,
   {provide: 
     'canDeactivateCreateEvent', 
     useValue: checkDirtyState}],

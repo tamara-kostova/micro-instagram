@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { IPost } from "./shared/post.model";
+import { Photo } from "./shared/photo.model";
 
 @Component({
     selector: 'post-thumbnail',
@@ -20,5 +21,5 @@ import { IPost } from "./shared/post.model";
     `]
 })
 export class PostThumbnailComponent{
-    @Input() post: IPost 
+    @Input() post: Photo
 }

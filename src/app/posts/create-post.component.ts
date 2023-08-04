@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { CompletePostService } from "./shared/completeposts.service";
 import { IPost } from "./shared/post.model";
+import { PostListService } from "./shared/postlist.service";
 
 @Component({
     templateUrl: './create-post.component.html',
@@ -29,17 +30,18 @@ export class CreatePostComponent{
     body: string
     url: string
     thumbnailUrl: string
-    constructor (private router:Router, private postService : CompletePostService){
+    constructor (private router:Router, private postlistservice : PostListService){
         
     }
     cancel(){
         this.router.navigate(['/posts']);
     }
     savePost(){
-        this.isDirty=false;
-        this.postService.savePost(
+        this.postlistservice.savePost(
             new IPost(this.userId,this.id,this.title,this.body,this.url,this.thumbnailUrl)
-        )
-        this.router.navigate(['/posts']);
+        ).subscribe(()=>{
+            this.isDirty=false;
+            this.router.navigate(['/posts']);
+        })
     }
 }
