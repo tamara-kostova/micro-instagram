@@ -24,6 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditPostComponent } from './posts/edit-post.component';
 import { PostDetailsService } from './posts/shared/postdetails.service';
 import { PostListService } from './posts/shared/postlist.service';
+import { AngularPaginatorModule } from 'angular-paginator';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 declare let toastr : Toastr
 
@@ -33,7 +35,8 @@ declare let toastr : Toastr
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   declarations: [
     PostsAppComponent,

@@ -10,20 +10,32 @@ import { PostListService } from "./shared/postlist.service";
       <h1>Posts</h1>
       <hr/>
       <div class="row">
-        <div *ngFor="let post of posts" class="col-md-5">
+        <div *ngFor="let post of posts | paginate
+              : {
+                  itemsPerPage: 10,
+                  currentPage: pagenumber,
+                  totalItems: 5000
+                }" class="col-md-5">
           <post-thumbnail [post]="post" >
           </post-thumbnail>
         </div>
       </div>
     </div>
+    <div class="d-flex justify-content-center">
+    <pagination-controls
+      (pageChange)="renderPage($event)"
+    ></pagination-controls>
+  </div>
     `,
 })
 export class PostsListComponent implements OnInit{
+
   posts: Photo[] = []
+  pagenumber : number = 1
   constructor(private postlistservice : PostListService, private route:ActivatedRoute){
   }
   ngOnInit(){
-    this.postlistservice.getPhotos().subscribe(data=>{this.posts=data})
+    this.postlistservice.getPhotos(this.pagenumber).subscribe(data=>{this.posts=data})
   }
   deletePost(id:any){
     if (window.confirm("Are you sure you want to delete this post?")) {
@@ -33,5 +45,9 @@ export class PostsListComponent implements OnInit{
   }
   edit(id:any){
     this.postlistservice.getIdforEdit(id)
+  }
+  renderPage(event: number) {
+    this.pagenumber = event;
+    this.postlistservice.getPhotos(this.pagenumber).subscribe(data=>{this.posts=data});
   }
 }

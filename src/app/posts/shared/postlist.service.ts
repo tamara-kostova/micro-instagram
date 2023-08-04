@@ -10,12 +10,13 @@ import { IPost } from './post.model';
 })
 export class PostListService {
   private src = "https://jsonplaceholder.typicode.com/photos"
+  //http://jsonplaceholder.typicode.com/photos?_page=10
   idforEdit : any
   constructor(private httpClient: HttpClient) { 
 
   }
-  public getPhotos(): Observable<Photo[]>{
-    return this.httpClient.get<Photo[]>(this.src).pipe(map(data => data))
+  public getPhotos(pagenumber:number): Observable<Photo[]>{
+    return this.httpClient.get<Photo[]>(this.src+"?_page="+pagenumber).pipe(map(data => data))
   }  
   savePost(post:IPost){
     let options = {headers:new HttpHeaders({'Content-Type':'application/json'})}
@@ -27,7 +28,7 @@ export class PostListService {
   editPost(post:IPost){
     if (this.idforEdit){
       let options = {headers:new HttpHeaders({'Content-Type':'application/json'})}
-      return this.httpClient.put<IPost>(this.src,post,options).pipe(catchError(this.handleError<IPost>('editPost')));
+      return this.httpClient.put<IPost>(this.src+post.id,post,options).pipe(catchError(this.handleError<IPost>('editPost')));
     }
   }
   deletePost(id:any){
