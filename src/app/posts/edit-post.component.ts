@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { CompletePostService } from "./shared/completeposts.service";
 import { IPost } from "./shared/post.model";
 import { PostListService } from "./shared/postlist.service";
 

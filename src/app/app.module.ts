@@ -5,7 +5,6 @@ import { RouterModule} from '@angular/router'
 import{
   PostsListComponent,
   PostThumbnailComponent,
-  PostsService,
   PostDetailsComponent,
   PostRouteActivator,
   CreatePostComponent
@@ -19,7 +18,6 @@ import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
 import { PhotosService } from './posts/shared/photos.service';
-import { CompletePostService } from './posts/shared/completeposts.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EditPostComponent } from './posts/edit-post.component';
 import { PostDetailsService } from './posts/shared/postdetails.service';
@@ -49,7 +47,6 @@ declare let toastr : Toastr
     PostsListComponent
   ],
   providers:[
-    PostsService, 
     {
       provide: TOASTER_TOKEN,
       useValue: toastr
@@ -59,7 +56,6 @@ declare let toastr : Toastr
     AuthService,
     PostDetailsService,
     PostListService,
-    CompletePostService,
   {provide: 
     'canDeactivateCreateEvent', 
     useValue: checkDirtyState}],

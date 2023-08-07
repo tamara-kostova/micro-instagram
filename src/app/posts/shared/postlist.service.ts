@@ -28,7 +28,7 @@ export class PostListService {
   editPost(post:IPost){
     if (this.idforEdit){
       let options = {headers:new HttpHeaders({'Content-Type':'application/json'})}
-      return this.httpClient.put<IPost>(this.src+post.id,post,options).pipe(catchError(this.handleError<IPost>('editPost')));
+      return this.httpClient.put<IPost>(this.src+"/"+this.idforEdit,post,options).pipe(catchError(this.handleError<IPost>('editPost')));
     }
   }
   deletePost(id:any){
