@@ -1,16 +1,21 @@
-<div class="container">
-    <img [src]="this.postdetailsservice.url" [alt]="post?.title" class="post-image">
+<div *ngIf="post" class="container">
+    <img [src]="this.postdetailsservice.url" [alt]="post.title" class="post-image">
     <div class="row">
       <div class="col-md-11">
-        <h2>{{post?.title | uppercase}} </h2>
+        <h2>{{post.title | uppercase}} </h2>
       </div>
     </div>
   
     <hr>
     <div class="row" style="margin-bottom: 10px;">
-      {{post?.body}}
+      {{post.body}}
     </div>
-    <button (click)="deletePost(post?.id)" class="btn btn-default">DELETE POST</button>
-    <button (click)="editPost(post?.id)" [routerLink]="['/posts/edit',post?.id]" class="btn btn-default">EDIT POST</button>
+    <button (click)="deletePost(post.id)" class="btn btn-default">DELETE POST</button>
+    <button (click)="editPost(post.id)" [routerLink]="['/posts/edit',post.id]" class="btn btn-default">EDIT POST</button>
     <button [routerLink]="['/posts']" class="btn btn-default">BACK</button>
-    </div>
+</div>
+<div *ngIf="!post" class="container">
+  <h1 class="row" style="margin-bottom: 10px;">
+    A post with the requested id does not exist!
+  </h1>
+</div>

@@ -31,12 +31,12 @@ export class EditPostComponent implements OnInit{
     thumbnailUrl: string
     edited : IPost
     constructor (private router:Router, private postlistservice : PostListService){
-        this.edited = new IPost(this.userId,this.id,this.title,this.body,this.url,this.thumbnailUrl)
     }
     cancel(){
         this.router.navigate(['/posts'])
     }
     editPost(){
+        this.edited = new IPost(this.userId,this.id,this.title,this.body,this.url,this.thumbnailUrl)
         this.postlistservice.editPost(this.edited)?.subscribe()
         this.isDirty=false;
         this.router.navigate(['/posts'])

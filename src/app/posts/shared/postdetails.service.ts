@@ -19,6 +19,5 @@ export class PostDetailsService {
   }
   public setUrl (url:string) {
     this.url = url; 
-    console.log("Vo service "+this.url)
   }
 }
