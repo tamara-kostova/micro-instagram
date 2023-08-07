@@ -5,7 +5,7 @@ import { PostDetailsService } from "./shared/postdetails.service";
 @Component({
     selector: 'post-thumbnail',
     template:`
-    <div [routerLink]="['/posts',post.id]" (click)="getUrl(post.url)" class="well hoverwell thumbnail">
+    <div [routerLink]="['/posts',post.id]" class="well hoverwell thumbnail">
         <h2>{{post.title | uppercase}}</h2>
         <div *ngIf="post?.thumbnailUrl">
             <img src="{{post.thumbnailUrl}}">
@@ -23,8 +23,5 @@ import { PostDetailsService } from "./shared/postdetails.service";
 export class PostThumbnailComponent{
     @Input() post: Photo
     constructor(private postdetailsservice : PostDetailsService){
-    }
-    getUrl(url:string){
-        this.postdetailsservice.setUrl(url);
     }
 }

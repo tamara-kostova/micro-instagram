@@ -4,12 +4,14 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Post } from './post-short.model';
 import { IPost } from './post.model';
+import { Photo } from './photo.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostDetailsService {
   private src = "https://jsonplaceholder.typicode.com/posts"
+  private src2 = "https://jsonplaceholder.typicode.com/photos"
   url : string
   constructor(private httpClient: HttpClient) { 
 
@@ -17,7 +19,7 @@ export class PostDetailsService {
   public getPost(id:number): Observable<IPost>{
     return this.httpClient.get<IPost>(this.src+'/'+id).pipe(map(data => data))
   }
-  public setUrl (url:string) {
-    this.url = url; 
+  public getUrl(id:number): Observable<Photo>{
+    return this.httpClient.get<Photo>(this.src2+'/'+id).pipe(map(data => data))
   }
 }
